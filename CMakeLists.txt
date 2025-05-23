@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.10)
+project(fuse_test C)
+add_definitions(-D_FILE_OFFSET_BITS=64)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Werror")
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(FUSE REQUIRED fuse)
+include_directories(${FUSE_INCLUDE_DIRS})
+add_executable(my_fs main.c)
+target_link_libraries(my_fs ${FUSE_LIBRARIES})
+
