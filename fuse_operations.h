@@ -38,7 +38,7 @@ struct fuse_operations {
 	int (*utimens)(const char *, const struct timespec tv[2],
 		       struct fuse_file_info * fi);
 	int (*bmap)(const char *, size_t blocksize, uint64_t * idx);
-#if FUSE_USE_VERSION < 35
+#if FUSE_USE_VERSION <= 34
 	int (*ioctl)(const char *, int cmd, void *arg,
 		     struct fuse_file_info *, unsigned int flags, void *data);
 #else
